@@ -1,0 +1,3 @@
+This example contains the end result of [Let's build GPT: from scratch, in code, spelled out.](https://www.youtube.com/watch?v=kCc8FmEb1nY) with the setup for building the model in a SageMaker notebook instance.
+
+Start by launching a SageMaker notebook. I recommend a G4dn.4xlarge. This is a small GPT model, and so you don't need a lot of compute, but will need a GPU. Clone this repo to your instance, and run the setup.sh file to create a PyTorch 2.0 Conda environment, and download the data. Note that this repo only contains the end result and working model. You'll need to work through the video linked above to build it yourself, but this will give you a reference environment to start from.
