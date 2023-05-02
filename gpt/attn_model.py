@@ -32,7 +32,7 @@ class MultiHeadAttention(torch.nn.Module):
 
     def __init__(self, num_heads=16, head_size=8, n_embd=128, dropout=0.1):
         super().__init__()
-        self.heads = torch.nn.ModuleList([Head(head_size) for _ in range(num_heads)])
+        self.heads = torch.nn.ModuleList([Head(head_size, n_embd) for _ in range(num_heads)])
         self.proj = torch.nn.Linear(n_embd, n_embd)
         self.dropout = torch.nn.Dropout(dropout)
 
@@ -63,7 +63,7 @@ class Block(torch.nn.Module):
         # n_embd: embedding dimension, n_head: the number of heads we'd like
         super().__init__()
         head_size = n_embd // n_head
-        self.sa = MultiHeadAttention(n_head, head_size)
+        self.sa = MultiHeadAttention(n_head, head_size, n_embd)
         self.ffwd = FeedFoward(n_embd)
         self.ln1 = torch.nn.LayerNorm(n_embd)
         self.ln2 = torch.nn.LayerNorm(n_embd)
